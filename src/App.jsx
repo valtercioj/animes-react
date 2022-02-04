@@ -21,11 +21,14 @@ export default function App() {
 
     return (
         <div className="App">
-            <h1>Animes</h1>
-            <SearchInput
-                value={text}
-                onChange={(search) => setText(search)}
-            />
+            <header className="animes-header">
+                <img src="https://animeiroiro.com.br/wp-content/uploads/2022/01/2022-logo-200px.webp" />
+
+                <SearchInput
+                    value={text}
+                    onChange={(search) => setText(search)}
+                />
+            </header>
 
             {text && !info.data && (
                 <span>Carregando...</span>

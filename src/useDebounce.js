@@ -7,7 +7,6 @@ export default function useDebounce(fn, delay) {
 
         timeoutRef.current = window.setTimeout(() => {
             fn(...params)
-            console.log(delay)
         }, delay)
     }
     return debounceFn;

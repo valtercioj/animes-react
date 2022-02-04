@@ -11,9 +11,11 @@ export default function SearchInput({ value, onChange }) {
     }
 
     return (
-        <input className="animes-input" type="search"
+        <input 
+        className="animes-input" type="search"
             value={displayValue}
             onChange={handleChange}
+            placeholder="Digite o anime"
         />
 
     )
