@@ -49,7 +49,28 @@
     max-width: 100%;
   }
 
+  .pagination{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+  .pagination li + li{
+    margin-left: 1rem;
+  }
+
+  .pagination li button{
+    padding: 5px;
+    margin-bottom: 20px;
+  }
+  .pagination__item--active{
+    background: none;
+    font-weight: bold;
+    border: none;
+  }
   
+  .pagination__item--active:focus{
+    outline: none;
+  }
   @media (max-width: 450px){
     .animes-header img{
       width: 35%;
@@ -60,9 +81,14 @@
 
     }
     .animes-list{
-      padding: 15px;
+      padding: 25px;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
+    .pagination li + li{
+      margin-left: 0.5rem;
+    }
+   
+    
   }
   @media (max-width: 375px){
     .animes-header img{
@@ -79,5 +105,11 @@
       padding: 15px;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
       grid-gap: 1.3rem;
+    }
+    .pagination{
+      padding: 0 55px;
+    }
+    .pagination li + li{
+      margin-left: 0.1rem;
     }
   }

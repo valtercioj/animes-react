@@ -27,8 +27,9 @@ export default function Pagitation({ limit, total, offset, setOffset }) {
                         onPageChange(current-1)
                     }
                     disabled={current===1}
+
                 >
-                    Anterior
+                    {"<<"}
                     </button>
             </li>
             {Array.from({ length:Math.min(maxItems,pages) })
@@ -59,8 +60,9 @@ export default function Pagitation({ limit, total, offset, setOffset }) {
                         onPageChange(current+1)
                     }
                     disabled={current===pages}
+                    className={current>=10?'button-2':null}
                 >
-                    Próxima
+                    {">>"}
                     </button>
             </li>
         </ul>
