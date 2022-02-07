@@ -1,23 +1,38 @@
 import { useState, useEffect } from "react";
 import './style.css'
 import SearchInput from './components/SearchInput'
+import Pagitation from "./components/Pagination";
+import qs from 'qs'
+const limit = 12
 export default function App() {
 
     const [text, setText] = useState('')
     const [info, setInfo] = useState({})
-
+    const [offset, setOffset] = useState(0)
     const api = 'https://kitsu.io/api/edge/'
 
     useEffect(() => {
-        setInfo({})
-        if (text) {
+        setInfo({});
+        const query = {
+            page:{
+                limit,
+                offset
+            }
+        };
 
-            fetch(`${api}anime?filter[text]=${text}&page[limit]=12
-        `)
-                .then((response) => response.json())
-                .then((response) => setInfo(response))
+
+        if(text){
+            query.filter = {
+                text,
+            };
         }
-    }, [text]);
+        
+        fetch(`${api}anime?${qs.stringify(query)}
+        `)
+            .then((response) => response.json())
+            .then((response) => setInfo(response))
+
+    }, [text, offset]);
 
     return (
         <div className="App">
@@ -29,12 +44,13 @@ export default function App() {
                     onChange={(search) => setText(search)}
                 />
             </header>
-
+            
             {text && !info.data && (
                 <span>Carregando...</span>
             )}
 
             {info.data && (
+
                 <ul className="animes-list">
                     {info.data.map((anime) => (
                         <li key={anime.id}>
@@ -44,6 +60,13 @@ export default function App() {
                         </li>
                     ))}
                 </ul>
+            )}
+            {info.meta && (
+                <Pagitation
+                    limit={limit}
+                    total={info.meta.count}
+                    offset={offset}
+                    setOffset={setOffset} />
             )}
         </div>
     )

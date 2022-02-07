@@ -49,6 +49,7 @@
     max-width: 100%;
   }
 
+  
   @media (max-width: 450px){
     .animes-header img{
       width: 35%;
