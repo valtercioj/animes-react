@@ -17,7 +17,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 Site em React js que se comunica com uma api e lista os animes a qual foi pesquisado
 ## 🔖 Layout
 
-Você pode visualizar o projeto através [desse link]().
+Você pode visualizar o projeto através [desse link](https://animes-list.netlify.app/).
 
 ## :memo: Licença
 
